@@ -2,524 +2,584 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>DreamSave</title>
+<title>DreamSave</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background:
-                radial-gradient(circle at 20% 10%, #102b46, transparent 35%),
-                radial-gradient(circle at 80% 30%, #101b3d, transparent 35%),
-                #05070d;
-            color: white;
-            min-height: 100vh;
-        }
+body{
+    font-family:Arial, sans-serif;
+    background:
+        radial-gradient(circle at 20% 10%,#102b46,transparent 35%),
+        radial-gradient(circle at 80% 30%,#101b3d,transparent 35%),
+        #05070d;
+    color:white;
+}
 
-        /* NAVBAR */
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    padding:16px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(5,7,13,.8);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #182437;
+}
 
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(15px);
-            background: rgba(5, 7, 13, 0.75);
-            border-bottom: 1px solid #172235;
-            padding: 15px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.nav-logo{
+    font-size:22px;
+    font-weight:bold;
+}
 
-        .nav-logo {
-            font-size: 22px;
-            font-weight: bold;
-        }
+nav a{
+    color:#aab4c3;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+}
 
-        nav a {
-            color: #aab4c3;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 14px;
-        }
+nav a:hover{
+    color:#00e5ff;
+}
 
-        nav a:hover {
-            color: #00e5ff;
-        }
+.hero{
+    min-height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:70px 20px;
+}
 
-        /* HERO */
+.container{
+    width:92%;
+    max-width:850px;
+    margin:auto;
+}
 
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 70px 20px;
-        }
+.logo{
+    width:120px;
+    height:120px;
+    margin:0 auto 25px;
+    border-radius:30px;
+    background:linear-gradient(135deg,#00e5ff,#0066ff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:60px;
+    box-shadow:0 0 55px rgba(0,229,255,.3);
+}
 
-        .container {
-            width: 92%;
-            max-width: 850px;
-            margin: auto;
-        }
+h1{
+    font-size:60px;
+    letter-spacing:3px;
+    margin-bottom:12px;
+}
 
-        .logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 25px;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #00e5ff, #0066ff);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 60px;
-            box-shadow: 0 0 55px rgba(0, 229, 255, 0.3);
-        }
+.tagline{
+    color:#aab4c3;
+    font-size:21px;
+    margin-bottom:35px;
+}
 
-        h1 {
-            font-size: 60px;
-            letter-spacing: 3px;
-            margin-bottom: 12px;
-        }
+.download{
+    display:inline-block;
+    padding:18px 38px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#00e5ff,#008cff);
+    color:#001018;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+    box-shadow:0 10px 40px rgba(0,229,255,.25);
+    transition:.25s;
+}
 
-        .tagline {
-            color: #aab4c3;
-            font-size: 21px;
-            margin-bottom: 35px;
-        }
+.download:hover{
+    transform:translateY(-4px) scale(1.03);
+}
 
-        .download {
-            display: inline-block;
-            padding: 18px 38px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #00e5ff, #008cff);
-            color: #001018;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0 10px 40px rgba(0, 229, 255, 0.25);
-            transition: 0.25s;
-        }
+.version{
+    margin-top:15px;
+    color:#667386;
+    font-size:13px;
+}
 
-        .download:hover {
-            transform: translateY(-4px) scale(1.03);
-        }
+section{
+    padding:80px 20px;
+}
 
-        .version {
-            margin-top: 15px;
-            color: #667386;
-            font-size: 13px;
-        }
+.section-title{
+    text-align:center;
+    font-size:35px;
+    margin-bottom:15px;
+}
 
-        /* SECTIONS */
+.section-subtitle{
+    text-align:center;
+    color:#8490a1;
+    margin-bottom:40px;
+}
 
-        section {
-            padding: 80px 20px;
-        }
+.features{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
 
-        .section-title {
-            text-align: center;
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
+.feature{
+    background:rgba(12,17,28,.85);
+    border:1px solid #182437;
+    border-radius:18px;
+    padding:25px;
+    transition:.25s;
+}
 
-        .section-subtitle {
-            text-align: center;
-            color: #8490a1;
-            margin-bottom: 40px;
-        }
+.feature:hover{
+    transform:translateY(-5px);
+    border-color:#00e5ff;
+}
 
-        /* FEATURES */
+.feature-icon{
+    font-size:32px;
+    margin-bottom:12px;
+}
 
-        .features {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-        }
+.feature h3{
+    margin-bottom:8px;
+}
 
-        .feature {
-            background: rgba(12, 17, 28, 0.8);
-            border: 1px solid #182437;
-            border-radius: 18px;
-            padding: 25px;
-            transition: 0.25s;
-        }
+.feature p{
+    color:#8995a7;
+    line-height:1.6;
+}
 
-        .feature:hover {
-            transform: translateY(-5px);
-            border-color: #00e5ff;
-        }
+.developer{
+    max-width:850px;
+    margin:auto;
+    background:rgba(12,17,28,.9);
+    border:1px solid #182437;
+    border-radius:22px;
+    padding:45px 30px;
+    text-align:center;
+}
 
-        .feature-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
-        }
+.dev-avatar{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    margin:0 auto 20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#00e5ff,#0066ff);
+    font-size:42px;
+    box-shadow:0 0 35px rgba(0,229,255,.25);
+}
 
-        .feature h3 {
-            margin-bottom: 8px;
-        }
+.developer h3{
+    font-size:27px;
+}
 
-        .feature p {
-            color: #8995a7;
-            line-height: 1.6;
-        }
+.dev-role{
+    color:#00e5ff;
+    margin:10px 0 30px;
+}
 
-        /* ABOUT */
+.what-title{
+    font-size:25px !important;
+    margin-bottom:25px;
+}
 
-        .about-box {
-            max-width: 800px;
-            margin: auto;
-            background: rgba(12, 17, 28, 0.85);
-            border: 1px solid #182437;
-            border-radius: 20px;
-            padding: 35px;
-            text-align: center;
-        }
+.skills{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    text-align:left;
+    margin-bottom:35px;
+}
 
-        .about-box p {
-            color: #9aa6b7;
-            line-height: 1.8;
-            margin-top: 15px;
-        }
+.skill{
+    background:#0b111c;
+    border:1px solid #1b2a3e;
+    border-radius:12px;
+    padding:15px;
+    color:#c4ccd8;
+}
 
-        /* DEVELOPER */
+.contact{
+    display:inline-block;
+    padding:14px 25px;
+    border-radius:12px;
+    background:#101827;
+    border:1px solid #24334a;
+    color:#00e5ff;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.2s;
+}
 
-        .developer {
-            max-width: 700px;
-            margin: auto;
-            text-align: center;
-            background: rgba(12, 17, 28, 0.85);
-            border: 1px solid #182437;
-            border-radius: 22px;
-            padding: 40px 25px;
-        }
+.contact:hover{
+    background:#152236;
+    transform:translateY(-2px);
+}
 
-        .dev-avatar {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            margin: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #00e5ff, #0066ff);
-            font-size: 35px;
-            margin-bottom: 20px;
-        }
+.about-box{
+    max-width:800px;
+    margin:auto;
+    background:rgba(12,17,28,.85);
+    border:1px solid #182437;
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+}
 
-        .developer h3 {
-            font-size: 27px;
-        }
+.about-box p{
+    color:#9aa6b7;
+    line-height:1.8;
+    margin-top:15px;
+}
 
-        .developer p {
-            color: #8995a7;
-            margin: 10px 0 25px;
-        }
+.download-section{
+    text-align:center;
+}
 
-        .contact {
-            display: inline-block;
-            padding: 14px 25px;
-            border-radius: 12px;
-            background: #101827;
-            border: 1px solid #24334a;
-            color: #00e5ff;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.download-card{
+    max-width:700px;
+    margin:auto;
+    padding:45px 25px;
+    border-radius:25px;
+    background:linear-gradient(
+        145deg,
+        rgba(0,229,255,.08),
+        rgba(0,100,255,.04)
+    );
+    border:1px solid #1c344c;
+}
 
-        .contact:hover {
-            background: #152236;
-        }
+.download-card p{
+    color:#8995a7;
+    margin:15px 0 30px;
+}
 
-        /* DOWNLOAD SECTION */
+footer{
+    border-top:1px solid #172235;
+    padding:30px 20px;
+    text-align:center;
+    color:#596577;
+    font-size:14px;
+}
 
-        .download-section {
-            text-align: center;
-        }
+@media(max-width:650px){
 
-        .download-card {
-            max-width: 700px;
-            margin: auto;
-            padding: 45px 25px;
-            border-radius: 25px;
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(0, 229, 255, 0.08),
-                    rgba(0, 100, 255, 0.04)
-                );
-            border: 1px solid #1c344c;
-        }
+    h1{
+        font-size:45px;
+    }
 
-        .download-card p {
-            color: #8995a7;
-            margin: 15px 0 30px;
-        }
+    .tagline{
+        font-size:17px;
+    }
 
-        /* FOOTER */
+    .features,
+    .skills{
+        grid-template-columns:1fr;
+    }
 
-        footer {
-            border-top: 1px solid #172235;
-            padding: 30px 20px;
-            text-align: center;
-            color: #596577;
-            font-size: 14px;
-        }
+    nav{
+        padding:15px 5%;
+    }
 
-        /* MOBILE */
+    nav a{
+        margin-left:8px;
+        font-size:11px;
+    }
 
-        @media (max-width: 650px) {
-
-            h1 {
-                font-size: 45px;
-            }
-
-            .tagline {
-                font-size: 17px;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-
-            nav {
-                padding: 15px 5%;
-            }
-
-            nav a {
-                margin-left: 10px;
-                font-size: 12px;
-            }
-
-            section {
-                padding: 60px 18px;
-            }
-        }
-    </style>
+    section{
+        padding:60px 18px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+<!-- NAVIGATION -->
 
-    <nav>
-        <div class="nav-logo">💰 DreamSave</div>
+<nav>
 
-        <div>
-            <a href="#features">Features</a>
-            <a href="#about">About</a>
-            <a href="#developer">Developer</a>
+    <div class="nav-logo">
+        💰 DreamSave
+    </div>
+
+    <div>
+        <a href="#features">Features</a>
+        <a href="#developer">Developer</a>
+        <a href="#about">About</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<div class="hero">
+
+    <div class="container">
+
+        <div class="logo">
+            💰
         </div>
-    </nav>
 
+        <h1>DreamSave</h1>
 
-    <!-- HERO -->
+        <p class="tagline">
+            Save money today. Reach your dream tomorrow.
+        </p>
 
-    <div class="hero">
+        <a
+            class="download"
+            href="https://github.com/anirudhadebbarma031214-commits/dreamsave-download/raw/refs/heads/main/Dreamsave.apk"
+            download
+        >
+            ⬇️ Download DreamSave
+        </a>
 
-        <div class="container">
-
-            <div class="logo">
-                💰
-            </div>
-
-            <h1>DreamSave</h1>
-
-            <p class="tagline">
-                Save money today. Reach your dream tomorrow.
-            </p>
-
-            <!-- DIRECT APK DOWNLOAD -->
-
-            <a
-                class="download"
-                href="https://github.com/anirudhadebbarma031214-commits/dreamsave-download/raw/refs/heads/main/Dreamsave.apk"
-                download
-            >
-                ⬇️ Download DreamSave
-            </a>
-
-            <div class="version">
-                Android APK • Free Download
-            </div>
-
+        <div class="version">
+            Android APK • Free Download
         </div>
 
     </div>
 
+</div>
 
-    <!-- FEATURES -->
 
-    <section id="features">
+<!-- FEATURES -->
 
-        <h2 class="section-title">Features</h2>
+<section id="features">
 
-        <p class="section-subtitle">
-            Everything you need to stay focused on your savings goal.
+    <h2 class="section-title">
+        DreamSave Features
+    </h2>
+
+    <p class="section-subtitle">
+        Everything you need to stay focused on your savings goal.
+    </p>
+
+    <div class="features">
+
+        <div class="feature">
+            <div class="feature-icon">🎯</div>
+            <h3>Dream Goals</h3>
+            <p>
+                Create savings goals for the things you want to achieve.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">💵</div>
+            <h3>Daily Savings</h3>
+            <p>
+                Add money every day and watch your savings grow.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📈</div>
+            <h3>Progress Tracking</h3>
+            <p>
+                See how close you are to reaching your target.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🔥</div>
+            <h3>Saving Streaks</h3>
+            <p>
+                Build consistent saving habits and keep your streak alive.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📜</div>
+            <h3>Savings History</h3>
+            <p>
+                View your previous deposits and savings activity.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">💾</div>
+            <h3>Local Storage</h3>
+            <p>
+                Keep your savings information stored locally on your device.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT DEVELOPER -->
+
+<section id="developer">
+
+    <h2 class="section-title">
+        About the Developer
+    </h2>
+
+    <p class="section-subtitle">
+        The creator behind DreamSave.
+    </p>
+
+    <div class="developer">
+
+        <div class="dev-avatar">
+            👨‍💻
+        </div>
+
+        <h3>
+            Aniruddha Debbrama
+        </h3>
+
+        <p class="dev-role">
+            Developer • Web Creator • App Creator • Designer
         </p>
 
-        <div class="features">
+        <h3 class="what-title">
+            What I Can Do
+        </h3>
 
-            <div class="feature">
-                <div class="feature-icon">🎯</div>
-                <h3>Dream Goals</h3>
-                <p>
-                    Create savings goals for the things you want to achieve.
-                </p>
+        <div class="skills">
+
+            <div class="skill">
+                📱 Android App Development
             </div>
 
-            <div class="feature">
-                <div class="feature-icon">💵</div>
-                <h3>Daily Savings</h3>
-                <p>
-                    Add your savings every day and watch your goal grow.
-                </p>
+            <div class="skill">
+                🌐 Website Development
             </div>
 
-            <div class="feature">
-                <div class="feature-icon">📈</div>
-                <h3>Progress Tracking</h3>
-                <p>
-                    See exactly how close you are to reaching your target.
-                </p>
+            <div class="skill">
+                💻 HTML, CSS & JavaScript
             </div>
 
-            <div class="feature">
-                <div class="feature-icon">🔥</div>
-                <h3>Saving Streaks</h3>
-                <p>
-                    Keep your motivation alive by building consistent saving streaks.
-                </p>
+            <div class="skill">
+                🎨 UI & Web Design
             </div>
 
-            <div class="feature">
-                <div class="feature-icon">📜</div>
-                <h3>History</h3>
-                <p>
-                    Keep track of your previous deposits and savings activity.
-                </p>
+            <div class="skill">
+                🤖 AI Project Development
             </div>
 
-            <div class="feature">
-                <div class="feature-icon">💾</div>
-                <h3>Local Storage</h3>
-                <p>
-                    Your savings data can stay stored locally on your device.
-                </p>
+            <div class="skill">
+                🎮 Game Development
+            </div>
+
+            <div class="skill">
+                🚀 App & Project Ideas
+            </div>
+
+            <div class="skill">
+                ⚡ Turning Ideas Into Projects
             </div>
 
         </div>
 
-    </section>
+        <a
+            class="contact"
+            href="mailto:anirudhadebbarma031214@gmail.com?subject=DreamSave%20Contact"
+        >
+            📧 Contact the Developer
+        </a>
+
+    </div>
+
+</section>
 
 
-    <!-- ABOUT DREAMSAVE -->
+<!-- ABOUT DREAMSAVE -->
 
-    <section id="about">
+<section id="about">
 
-        <h2 class="section-title">About DreamSave</h2>
+    <h2 class="section-title">
+        About DreamSave
+    </h2>
 
-        <div class="about-box">
+    <div class="about-box">
 
-            <h3>Turn small savings into big dreams.</h3>
+        <h3>
+            Turn small savings into big dreams.
+        </h3>
 
-            <p>
-                DreamSave is a simple savings goal app designed to help you
-                plan, track, and stay motivated while saving for something
-                important to you.
-            </p>
-
-            <p>
-                Set a target, add your savings, follow your progress,
-                and keep moving toward your dream.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- DEVELOPER -->
-
-    <section id="developer">
-
-        <h2 class="section-title">About the Developer</h2>
-
-        <p class="section-subtitle">
-            Meet the person behind DreamSave.
+        <p>
+            DreamSave is a simple savings goal app designed to help you
+            plan, track, and stay motivated while saving for something
+            important to you.
         </p>
 
-        <div class="developer">
+        <p>
+            Set a target, add your savings, follow your progress,
+            and keep moving toward your dream.
+        </p>
 
-            <div class="dev-avatar">
-                👨‍💻
-            </div>
+    </div>
 
-            <h3>Aniruddha Debbrama</h3>
-
-            <p>
-                Developer & Creator of DreamSave
-            </p>
-
-            <a
-                class="contact"
-                href="mailto:anirudhadebbarma031214@gmail.com?subject=DreamSave%20Contact"
-            >
-                📧 Contact the Developer
-            </a>
-
-        </div>
-
-    </section>
+</section>
 
 
-    <!-- DOWNLOAD -->
+<!-- DOWNLOAD -->
 
-    <section class="download-section">
+<section class="download-section">
 
-        <div class="download-card">
+    <div class="download-card">
 
-            <h2>Ready to start saving?</h2>
+        <h2>
+            Ready to start saving?
+        </h2>
 
-            <p>
-                Download DreamSave and start working toward your next goal.
-            </p>
+        <p>
+            Download DreamSave and start working toward your next goal.
+        </p>
 
-            <a
-                class="download"
-                href="https://github.com/anirudhadebbarma031214-commits/dreamsave-download/raw/refs/heads/main/Dreamsave.apk"
-                download
-            >
-                ⬇️ Download DreamSave APK
-            </a>
+        <a
+            class="download"
+            href="https://github.com/anirudhadebbarma031214-commits/dreamsave-download/raw/refs/heads/main/Dreamsave.apk"
+            download
+        >
+            ⬇️ Download DreamSave APK
+        </a>
 
-        </div>
+    </div>
 
-    </section>
+</section>
 
 
-    <!-- FOOTER -->
+<!-- FOOTER -->
 
-    <footer>
-        © 2026 DreamSave
-        <br><br>
-        Made with ❤️ by Aniruddha Debbrama
-    </footer>
+<footer>
+
+    © 2026 DreamSave
+    <br><br>
+    Made with ❤️ by Aniruddha Debbrama
+
+</footer>
 
 </body>
 </html>
